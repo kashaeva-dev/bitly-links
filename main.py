@@ -62,9 +62,9 @@ def is_bitlink(url):
     return url_parsed.path.split('/')[0] == 'bit.ly'
 
 
-url = input('Введите ссылку: ')
-if is_bitlink(url):
-    print(count_clicks(url))
-else:
-    print(shorten_link(url))
-
+if __name__ == "__main__":
+    url = input('Введите ссылку: ')
+    if is_bitlink(url):
+        print(count_clicks(url))
+    else:
+        print(shorten_link(url))
