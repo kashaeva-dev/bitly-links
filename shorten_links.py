@@ -5,8 +5,9 @@ import requests
 from variables import token, group_guid
 from urllib.parse import urlparse
 
-def shorten_link(token=token, group_guid=group_guid):
-    url = input("Введите ссылку, которую хотите сократить: ")
+
+def shorten_link(url, token=token, group_guid=group_guid):
+
     try:                                                  # Проверяем, что пользователем была введена корректная ссылка
         requests.get(url)
     except requests.exceptions.ConnectionError:
@@ -34,8 +35,8 @@ def shorten_link(token=token, group_guid=group_guid):
         return "Ошибка! Сервис Bitly недоступен."
 
 
-def count_clicks(token=token):
-    url = input("Введите битлинк, для которого хотите узнать количество кликов: ")
+def count_clicks(url, token=token):
+
     try:
         request_url = f'https://api-ssl.bitly.com/v4/bitlinks/{url}/clicks/summary'
 
@@ -56,10 +57,14 @@ def count_clicks(token=token):
         return "Ошибка! Сервис Bitly недоступен."
 
 
-def is_bitlink():
-    url=input('Введите ссылку: ')
+def is_bitlink(url):
     url_parsed = urlparse(url)
     return url_parsed.path.split('/')[0] == 'bit.ly'
 
 
-print(is_bitlink())
+url = input('Введите ссылку: ')
+if is_bitlink(url):
+    print(count_clicks(url))
+else:
+    print(shorten_link(url))
+
