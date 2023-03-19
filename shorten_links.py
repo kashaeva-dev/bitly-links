@@ -3,7 +3,7 @@ import json
 import requests
 
 from variables import token, group_guid
-
+from urllib.parse import urlparse
 
 def shorten_link(token=token, group_guid=group_guid):
     url = input("Введите ссылку, которую хотите сократить: ")
@@ -56,4 +56,10 @@ def count_clicks(token=token):
         return "Ошибка! Сервис Bitly недоступен."
 
 
-print(count_clicks())
+def is_bitlink():
+    url=input('Введите ссылку: ')
+    url_parsed = urlparse(url)
+    return url_parsed.path.split('/')[0] == 'bit.ly'
+
+
+print(is_bitlink())
