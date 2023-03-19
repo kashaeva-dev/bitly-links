@@ -1,12 +1,8 @@
 import json
-import os
 
 import requests
-from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
-
-token = os.getenv('BITLY_TOKEN')
+from variables import token
 
 
 def get_user_info(token=token):
