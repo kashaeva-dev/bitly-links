@@ -1,9 +1,12 @@
-import requests
 import json
 import os
 
-token = os.environ.get('BITLY_TOKEN')
-group_guid = os.environ.get('BITLY_GROUP_GUID')
+import requests
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
+token = os.getenv('BITLY_TOKEN')
 
 
 def get_user_info(token=token):
