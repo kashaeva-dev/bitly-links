@@ -34,4 +34,26 @@ def shorten_link(token=token, group_guid=group_guid):
         return "Ошибка! Сервис Bitly недоступен."
 
 
-print(shorten_link())
+def count_clicks(token=token):
+    url = input("Введите битлинк, для которого хотите узнать количество кликов: ")
+    try:
+        request_url = f'https://api-ssl.bitly.com/v4/bitlinks/{url}/clicks/summary'
+
+        headers = {
+            'Authorization': token,
+        }
+
+        params = {
+            ('unit', 'day'),
+            ('units', '-1'),
+        }
+
+        response = requests.get(request_url, headers=headers, params=params)
+        response.raise_for_status()
+        return response.json()['total_clicks']
+
+    except requests.exceptions.HTTPError:
+        return "Ошибка! Сервис Bitly недоступен."
+
+
+print(count_clicks())
