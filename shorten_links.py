@@ -5,7 +5,8 @@ import requests
 from variables import token, group_guid
 
 
-def shorten_link(url=input("Введите ссылку, которую хотите сократить: "), token=token, group_guid=group_guid):
+def shorten_link(token=token, group_guid=group_guid):
+    url = input("Введите ссылку, которую хотите сократить: ")
     try:                                                  # Проверяем, что пользователем была введена корректная ссылка
         requests.get(url)
     except requests.exceptions.ConnectionError:
