@@ -66,8 +66,8 @@ GROUP_GUID=default_group_guid_value
 
 To shorten URLs and track clicks on shortened links you can use either the main.py
 file or import separate functions from it.
-### Just run main.py file:
-You can just run the main.py file:
+
+**You can just run the main.py file:**
 ```python
 python main.py
 ```
@@ -75,7 +75,9 @@ You will be prompted to enter a URL. If the URL is a Bitly link, the script
 will return the total number of clicks on that link. If the URL is not 
 a Bitly link, the script will use Bitly's API to shorten the URL and 
 return the shortened link.
-### Import the necessary functions from the main.py file:
+
+**You can import the necessary functions from the main.py file:**
+
 ```python
 from main import shorten_link, count_clicks, is_bitlink
 ```
