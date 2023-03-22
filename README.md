@@ -75,7 +75,7 @@ You will be prompted to enter a URL. If the URL is a Bitly link, the script
 will return the total number of clicks on that link. If the URL is not 
 a Bitly link, the script will use Bitly's API to shorten the URL and 
 return the shortened link.
-###Import the necessary functions from the main.py file:
+### Import the necessary functions from the main.py file:
 ```python
 from main import shorten_link, count_clicks, is_bitlink
 ```
