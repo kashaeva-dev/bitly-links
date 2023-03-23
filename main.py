@@ -12,12 +12,12 @@ def shorten_link(url, token):
        'Content-Type': 'application/json',
     }
 
-    data = {
+    params = {
         "long_url": url,
         "domain": "bit.ly",
     }
 
-    response = requests.post(request_url, headers=headers, json=data)
+    response = requests.post(request_url, headers=headers, json=params)
     response.raise_for_status()
     return response.json()['id']
 
