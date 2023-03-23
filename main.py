@@ -59,10 +59,12 @@ if __name__ == "__main__":
 
     load_dotenv(find_dotenv())
 
-    url = input('Введите ссылку: ')
-    token = os.getenv('BITLY_TOKEN')
-
-    if is_bitlink(url):
-        print(count_clicks(url, token))
-    else:
-        print(shorten_link(url, token))
+    try:
+        token = os.environ['BITLY_TOKEN']
+        url = input('Введите ссылку: ')
+        if is_bitlink(url):
+            print(count_clicks(url, token))
+        else:
+            print(shorten_link(url, token))
+    except KeyError:
+        print("Не получается найти переменную окружения BITLY_TOKEN")
