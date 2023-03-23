@@ -59,9 +59,9 @@ if __name__ == "__main__":
         token = os.environ['BITLY_TOKEN']
         url = input('Введите ссылку: ')
         if is_bitlink(url):
-            print(count_clicks(url, token))
+            print(f"Битлинк: {count_clicks(url, token)}")
         else:
-            print(shorten_link(url, token))
+            print(f"По Вашей ссылке прошли: {shorten_link(url, token)} раз(а)")
     except KeyError:
         print("Не получается найти переменную окружения BITLY_TOKEN")
     except requests.exceptions.HTTPError:
