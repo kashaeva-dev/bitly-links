@@ -1,12 +1,12 @@
 import json
-
-import requests
-
-from variables import token, group_guid
+import os
 from urllib.parse import urlparse
 
+import requests
+from dotenv import load_dotenv, find_dotenv
 
-def shorten_link(url, token=token, group_guid=group_guid):
+
+def shorten_link(url, token, group_guid):
     try:
         request_url = 'https://api-ssl.bitly.com/v4/shorten'
 
@@ -29,7 +29,7 @@ def shorten_link(url, token=token, group_guid=group_guid):
         return "Ошибка! Сервис Bitly недоступен."
 
 
-def count_clicks(url, token=token):
+def count_clicks(url, token):
 
     try:
         request_url = f'https://api-ssl.bitly.com/v4/bitlinks/{url}/clicks/summary'
@@ -57,8 +57,14 @@ def is_bitlink(url):
 
 
 if __name__ == "__main__":
+
+    load_dotenv(find_dotenv())
+
     url = input('Введите ссылку: ')
+    token = os.getenv('BITLY_TOKEN')
+    group_guid = os.getenv('GROUP_GUID')
+
     if is_bitlink(url):
-        print(count_clicks(url))
+        print(count_clicks(url, token))
     else:
-        print(shorten_link(url))
+        print(shorten_link(url, token, group_guid))
