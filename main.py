@@ -1,4 +1,3 @@
-import json
 import os
 from urllib.parse import urlparse
 
@@ -20,8 +19,7 @@ def shorten_link(url, token):
             "domain": "bit.ly",
         }
 
-        data_json = json.dumps(data)
-        response = requests.post(request_url, headers=headers, data=data_json)
+        response = requests.post(request_url, headers=headers, json=data)
         response.raise_for_status()
         return response.json()['id']
     except requests.exceptions.HTTPError:
