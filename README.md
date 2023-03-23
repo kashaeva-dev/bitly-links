@@ -39,19 +39,17 @@ Set up environment variables:
 
 Create a .env file in the project directory.
 
-5. Add the following lines to the .env file:
+5. Add the following line to the .env file:
 
 ```bash
 BITLY_TOKEN=<your Bitly access token>
-GROUP_GUID=<your Bitly group GUID>
 ```
 ## How to use
-To use this code first you should receive a Bitly API access token and a group_guid on the
-[Bitly](https://app.bitly.com/settings/api/) webpage. Then you should save them in the
+To use this code first you should receive a Bitly API access token on the
+[Bitly](https://app.bitly.com/settings/api/) webpage. Then you should save it in the
 .env file in the following format without any quaters:
 
 BITLY_TOKEN=your_API_token
-GROUP_GUID=your_group_guid
 
 To shorten URLs and track clicks on shortened links you can use either the main.py
 file or import separate functions from it.

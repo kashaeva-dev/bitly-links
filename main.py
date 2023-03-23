@@ -6,7 +6,7 @@ import requests
 from dotenv import load_dotenv, find_dotenv
 
 
-def shorten_link(url, token, group_guid):
+def shorten_link(url, token):
     try:
         request_url = 'https://api-ssl.bitly.com/v4/shorten'
 
@@ -18,7 +18,6 @@ def shorten_link(url, token, group_guid):
         data = {
             "long_url": url,
             "domain": "bit.ly",
-            "group_guid": group_guid,
         }
 
         data_json = json.dumps(data)
@@ -62,9 +61,8 @@ if __name__ == "__main__":
 
     url = input('Введите ссылку: ')
     token = os.getenv('BITLY_TOKEN')
-    group_guid = os.getenv('GROUP_GUID')
 
     if is_bitlink(url):
         print(count_clicks(url, token))
     else:
-        print(shorten_link(url, token, group_guid))
+        print(shorten_link(url, token))
