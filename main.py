@@ -7,12 +7,6 @@ from urllib.parse import urlparse
 
 
 def shorten_link(url, token=token, group_guid=group_guid):
-
-    try:                                                  # Проверяем, что пользователем была введена корректная ссылка
-        requests.get(url)
-    except requests.exceptions.ConnectionError:
-        return "Ошибка! Введена неверная ссылка."
-
     try:
         request_url = 'https://api-ssl.bitly.com/v4/shorten'
 

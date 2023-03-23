@@ -46,23 +46,12 @@ BITLY_TOKEN=<your Bitly access token>
 GROUP_GUID=<your Bitly group GUID>
 ```
 ## How to use
-To use this code first you should receive a Bitly API access token on the
-https://app.bitly.com/settings/api/ webpage. Then you should save it in the
-.env file in the following format:
+To use this code first you should receive a Bitly API access token and a group_guid on the
+[Bitly](https://app.bitly.com/settings/api/) webpage. Then you should save them in the
+.env file in the following format without any quaters:
 
-BITLY_TOKEN=token_you_get
-
-without any quaters.
-Then you should get a group_guid. For this purpose you can run "connection.py"
-file:
-```python
-python connection.py
-```
-Then you should use the default_group_guid value to add the GROUP_GUID variable in the
-.env file. The format of the GROUP_GUID variable is the same as the BITLY_TOKEN. You should
-add to the .env file:
-
-GROUP_GUID=default_group_guid_value
+BITLY_TOKEN=your_API_token
+GROUP_GUID=your_group_guid
 
 To shorten URLs and track clicks on shortened links you can use either the main.py
 file or import separate functions from it.
