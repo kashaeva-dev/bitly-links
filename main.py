@@ -9,12 +9,10 @@ def shorten_link(url, token):
 
     headers = {
        'Authorization': token,
-       'Content-Type': 'application/json',
     }
 
     params = {
         "long_url": url,
-        "domain": "bit.ly",
     }
 
     response = requests.post(request_url, headers=headers, json=params)
