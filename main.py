@@ -54,12 +54,12 @@ if __name__ == "__main__":
 
     try:
         token = os.environ['BITLY_TOKEN']
-        url = input('Введите ссылку: ')
-        if is_bitlink(url):
-            print(f"По Вашей ссылке прошли: {count_clicks(url, token)} раз(а)")
-        else:
-            print(f"Битлинк: {shorten_link(url, token)}")
     except KeyError:
         print("Не получается найти переменную окружения BITLY_TOKEN")
-    except requests.exceptions.HTTPError:
-        print("Ошибка! Сервис Bitly недоступен.")
+
+    url = input('Введите ссылку: ')
+    if is_bitlink(url):
+        print(f"По Вашей ссылке прошли: {count_clicks(url, token)} раз(а)")
+    else:
+        print(f"Битлинк: {shorten_link(url, token)}")
+
