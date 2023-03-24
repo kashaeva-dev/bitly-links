@@ -47,7 +47,6 @@ def is_bitlink(url):
     }
 
     response = requests.get(request_url, headers=headers)
-    response.raise_for_status()
     return response.ok
 
 
@@ -59,9 +58,9 @@ if __name__ == "__main__":
         token = os.environ['BITLY_TOKEN']
         url = input('Введите ссылку: ')
         if is_bitlink(url):
-            print(f"Битлинк: {count_clicks(url, token)}")
+            print(f"По Вашей ссылке прошли: {count_clicks(url, token)} раз(а)")
         else:
-            print(f"По Вашей ссылке прошли: {shorten_link(url, token)} раз(а)")
+            print(f"Битлинк: {shorten_link(url, token)}")
     except KeyError:
         print("Не получается найти переменную окружения BITLY_TOKEN")
     except requests.exceptions.HTTPError:
