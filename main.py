@@ -1,7 +1,9 @@
 import os
+import argparse
 
 import requests
 from dotenv import load_dotenv, find_dotenv
+from urllib.parse import urlparse
 
 
 def shorten_link(url, token):
@@ -48,6 +50,19 @@ def is_bitlink(url):
     return response.ok
 
 
+def get_netloc_and_path(url):
+    parsed_url = urlparse(url)
+    return "".join([parsed_url.netloc, parsed_url.path])
+
+
+def create_parser():
+    parser=argparse.ArgumentParser(prog='Bitlinks',
+                                   description='A Python wrapper for the Bitly API,\
+                                       which can be used to shorten URLs and track clicks on shortened links',
+                                   )
+    parser.add_argument('link', help='Необходимо ввести ссылку')
+    return parser
+
 if __name__ == "__main__":
 
     load_dotenv(find_dotenv())
@@ -57,9 +72,14 @@ if __name__ == "__main__":
     except KeyError:
         print("Не получается найти переменную окружения BITLY_TOKEN")
 
-    url = input('Введите ссылку: ')
-    if is_bitlink(url):
-        print(f"По Вашей ссылке прошли: {count_clicks(url, token)} раз(а)")
+    parser = create_parser()
+    namespace = parser.parse_args()
+
+    url = namespace.link
+    cropped_url = get_netloc_and_path(url)
+
+    if is_bitlink(cropped_url):
+        print(f"По Вашей ссылке прошли: {count_clicks(cropped_url, token)} раз(а)")
     else:
         print(f"Битлинк: {shorten_link(url, token)}")
 
