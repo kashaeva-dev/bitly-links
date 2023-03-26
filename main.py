@@ -1,9 +1,9 @@
-import os
 import argparse
+import os
+from urllib.parse import urlparse
 
 import requests
 from dotenv import load_dotenv, find_dotenv
-from urllib.parse import urlparse
 
 
 def shorten_link(url, token):
@@ -56,12 +56,14 @@ def get_netloc_and_path(url):
 
 
 def create_parser():
-    parser=argparse.ArgumentParser(prog='Bitlinks',
-                                   description='A Python wrapper for the Bitly API,\
-                                       which can be used to shorten URLs and track clicks on shortened links',
-                                   )
+    parser = argparse.ArgumentParser(
+        prog='Bitlinks',
+        description='A Python wrapper for the Bitly API, which can be used '
+                    'to shorten URLs and track clicks on shortened links',
+    )
     parser.add_argument('link', help='Необходимо ввести ссылку')
     return parser
+
 
 if __name__ == "__main__":
 
@@ -82,4 +84,3 @@ if __name__ == "__main__":
         print(f"По Вашей ссылке прошли: {count_clicks(cropped_url, token)} раз(а)")
     else:
         print(f"Битлинк: {shorten_link(url, token)}")
-
