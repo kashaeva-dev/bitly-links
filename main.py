@@ -39,7 +39,7 @@ def count_clicks(url, token):
     return response.json()['total_clicks']
 
 
-def is_bitlink(url):
+def is_bitlink(url, token):
     request_url = f'https://api-ssl.bitly.com/v4/bitlinks/{url}'
 
     headers = {
@@ -76,7 +76,7 @@ if __name__ == "__main__":
     parsed_url = urlparse(url)
     cropped_url = "".join([parsed_url.netloc, parsed_url.path])
 
-    if is_bitlink(cropped_url):
+    if is_bitlink(cropped_url, token):
         print(f"По Вашей ссылке прошли: {count_clicks(cropped_url, token)} раз(а)")
     else:
         print(f"Битлинк: {shorten_link(url, token)}")
