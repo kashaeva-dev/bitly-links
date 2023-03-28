@@ -56,7 +56,7 @@ def create_parser():
         description='A Python wrapper for the Bitly API, which can be used '
                     'to shorten URLs and track clicks on shortened links',
     )
-    parser.add_argument('link', help='Необходимо ввести ссылку')
+    parser.add_argument('url', help='Необходимо ввести ссылку')
     return parser
 
 
@@ -70,9 +70,9 @@ if __name__ == "__main__":
         print("Не получается найти переменную окружения BITLY_TOKEN")
 
     parser = create_parser()
-    namespace = parser.parse_args()
+    user_input = parser.parse_args()
 
-    url = namespace.link
+    url = user_input.url
     parsed_url = urlparse(url)
     cropped_url = "".join([parsed_url.netloc, parsed_url.path])
 
