@@ -60,8 +60,7 @@ def create_parser():
     return parser
 
 
-if __name__ == "__main__":
-
+def main():
     load_dotenv(find_dotenv())
 
     try:
@@ -80,3 +79,7 @@ if __name__ == "__main__":
         print(f"По Вашей ссылке прошли: {count_clicks(cropped_url, token)} раз(а)")
     else:
         print(f"Битлинк: {shorten_link(url, token)}")
+
+
+if __name__ == "__main__":
+    main()
