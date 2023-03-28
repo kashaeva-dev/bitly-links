@@ -52,19 +52,16 @@ To use this code first you should receive a Bitly API access token on the
 
 BITLY_TOKEN=your_Bitly_API_token
 
-To shorten URLs and track clicks on shortened links you can use either the main.py
-file via command line or import separate functions from it.
+To shorten URLs and track clicks on shortened links you can use either run the main.py
+file from command line or import separate functions from it.
 
-
-**You can run the main.py file via command line:**
-
-To use main.py, run the script with the following command:
+**You can run the script with the following command:**
 
 ```
 python main.py <url>
 ```
 
-Replace <url> with the URL you want to shorten or track clicks on.
+Replace \<url\> with the URL you want to shorten or track clicks on.
 
 If the URL is already a Bitlink, the script will return the number of clicks on the link. If it is a regular URL, the script will shorten it and return the Bitlink.
 
@@ -87,29 +84,29 @@ python main.py https://bit.ly/3tvX5W3
 ```python
 from main import shorten_link, count_clicks, is_bitlink
 ```
-Use the shorten_link function to shorten a URL:
+Use the **shorten_link** function to shorten a URL:
 
 ```python
 short_url = shorten_link(long_url, token)
 ```
-The long_url argument is the URL you want to shorten, token is <your Bitly API token>, you should load if from your
+The *long_url* argument is the URL you want to shorten, *token* is \<your Bitly API token\>, you should load it from your
 virtual environment.
 
-The function returns a shortened URL, or an error message if the Bitly service is unavailable or the URL is invalid.
+The function returns a shortened URL.
 
-Use the count_clicks function to get the number of clicks on a shortened URL:
+Use the **count_clicks** function to get the number of clicks on a shortened URL:
 ```python
 clicks = count_clicks(short_url, token)
 ```
-The short_url argument is the URL you want to track clicks on, token is <your Bitly API token>, you should load if from your
+The *short_url* argument is the URL you want to track clicks on, *token* is \<your Bitly API token\>, you should load it from your
 virtual environment.
-The function returns the number of clicks on the URL.
+The function returns the total number of clicks on the URL.
 
-Use the is_bitlink function to check if a given URL is a Bitly link:
+Use the **is_bitlink** function to check if a given URL is a Bitly link:
 ```python
 is_bitly = is_bitlink(url, token)
 ```
-The url argument is the URL you want to check.
+The *url* argument is the URL you want to check.
 The function returns True if the URL is a Bitly link, False otherwise.
 
 ## Contributing
