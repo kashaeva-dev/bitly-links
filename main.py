@@ -50,11 +50,6 @@ def is_bitlink(url):
     return response.ok
 
 
-def get_netloc_and_path(url):
-    parsed_url = urlparse(url)
-    return "".join([parsed_url.netloc, parsed_url.path])
-
-
 def create_parser():
     parser = argparse.ArgumentParser(
         prog='Bitlinks',
@@ -78,7 +73,8 @@ if __name__ == "__main__":
     namespace = parser.parse_args()
 
     url = namespace.link
-    cropped_url = get_netloc_and_path(url)
+    parsed_url = urlparse(url)
+    cropped_url = "".join([parsed_url.netloc, parsed_url.path])
 
     if is_bitlink(cropped_url):
         print(f"По Вашей ссылке прошли: {count_clicks(cropped_url, token)} раз(а)")
